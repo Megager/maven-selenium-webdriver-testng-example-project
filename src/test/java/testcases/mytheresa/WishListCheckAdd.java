@@ -1,5 +1,6 @@
 package testcases.mytheresa;
 
+import io.cloudbeat.testng.CbTestNg;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
@@ -13,14 +14,12 @@ import objectRepository.mytheresa.MytheresaWishListPage;
 
 import static variables.mytheresa.UserVariables.*;
 
-public class WishListCheckAdd {
+public class WishListCheckAdd extends CbTestNg {
 
 	@Test
-	public void WishList() {
-
-		BrowserSetting bs = new BrowserSetting();
-
-		WebDriver driver = bs.BrowserSettings();
+	public void WishList() throws Exception {
+		setupWebDriver();
+		BrowserSetting.SetupSettings(driver);
 
 		logIn(driver);
 

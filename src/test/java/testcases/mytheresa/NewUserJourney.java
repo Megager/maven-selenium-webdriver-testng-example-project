@@ -1,10 +1,13 @@
 package testcases.mytheresa;
 
+import io.cloudbeat.testng.CbTestNg;
+import io.cloudbeat.testng.Plugin;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import objectRepository.mytheresa.MytheresaAccountInformationPage;
@@ -14,15 +17,14 @@ import objectRepository.mytheresa.MytheresaMyAccountPage;
 
 import static variables.mytheresa.UserVariables.*;
 
-public class NewUserJourney {
+@Listeners(Plugin.class)
+public class NewUserJourney extends CbTestNg {
 
 	@Test
-	public void accountCreate() {
+	public void accountCreate() throws Exception {
 
-		BrowserSetting bs = new BrowserSetting();
-
-		WebDriver driver = bs.BrowserSettings();
-
+		setupWebDriver();
+		BrowserSetting.SetupSettings(driver);
 		createAccount(driver);
 
 		// password change
