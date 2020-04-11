@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -23,7 +25,10 @@ public class NewUserJourney extends CbTestNg {
 	@Test
 	public void accountCreate() throws Exception {
 
-		setupWebDriver();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+		initWebDriver(capabilities);
 		BrowserSetting.SetupSettings(driver);
 		createAccount(driver);
 

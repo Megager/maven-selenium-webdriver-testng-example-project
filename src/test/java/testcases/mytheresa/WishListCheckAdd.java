@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 import objectRepository.mytheresa.MytheresaHomePage;
@@ -18,7 +20,10 @@ public class WishListCheckAdd extends CbTestNg {
 
 	@Test
 	public void WishList() throws Exception {
-		setupWebDriver();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+		capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+		initWebDriver(capabilities);
 		BrowserSetting.SetupSettings(driver);
 
 		logIn(driver);
